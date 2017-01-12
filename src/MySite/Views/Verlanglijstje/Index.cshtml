@@ -1,0 +1,50 @@
+@model IEnumerable<MySite.Models.Verlanglijstje>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Mijn verlanglijstje</h2><hr />
+
+<p>
+    <a class="btn btn-default" asp-action="Create">Nieuwe wens</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>            
+            <th>
+                @Html.DisplayNameFor(model => model.Naam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prijs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Link)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>            
+            <td>
+                @Html.DisplayFor(modelItem => item.Naam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prijs)
+            </td>
+            <td>
+                @if (item.Link != "" && item.Link != null)
+                {
+                <a href="@item.Link">klik mij</a>
+                }
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Wijzig</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Verwijder</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
