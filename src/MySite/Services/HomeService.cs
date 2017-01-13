@@ -12,11 +12,11 @@ namespace MySite.Services
     public class HomeService
         : IHomeService
     {
-        private IRepository<Lijstje, int> _lijstjeRepo;
+        private IRepository<Lijst, int> _lijstjeRepo;
         private IRepository<Reis, int> _reisRepo;
-        private IRepository<Verlanglijstje, int> _verlanglijstRepo;
+        private IRepository<Verlanglijst, int> _verlanglijstRepo;
 
-        public HomeService(IRepository<Lijstje, int> lijstjeRepo, IRepository<Reis, int> reisRepo, IRepository<Verlanglijstje, int> verlanglijstRepo)
+        public HomeService(IRepository<Lijst, int> lijstjeRepo, IRepository<Reis, int> reisRepo, IRepository<Verlanglijst, int> verlanglijstRepo)
         {
             _lijstjeRepo = lijstjeRepo;
             _reisRepo = reisRepo;

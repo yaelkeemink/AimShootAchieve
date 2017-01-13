@@ -9,15 +9,15 @@ using MySite.Services.ServiceInterfaces;
 namespace MySite.Services
 {
     public class VerlanglijstjeService
-        :IService<Verlanglijstje, int>
+        :IService<Verlanglijst, int>
     {
-        private IRepository<Verlanglijstje, int> _repo;
+        private IRepository<Verlanglijst, int> _repo;
 
-        public VerlanglijstjeService(IRepository<Verlanglijstje, int> repo)
+        public VerlanglijstjeService(IRepository<Verlanglijst, int> repo)
         {
             _repo = repo;
         }
-        public void Add(Verlanglijstje item)
+        public void Add(Verlanglijst item)
         {
             _repo.Insert(item);
         }
@@ -28,19 +28,19 @@ namespace MySite.Services
             _repo.Delete(toDelete);
         }
 
-        public Verlanglijstje Get(int id)
+        public Verlanglijst Get(int id)
         {
             return _repo.Find(id);
         }
 
-        public IEnumerable<Verlanglijstje> GetAll()
+        public IEnumerable<Verlanglijst> GetAll()
         {
             return _repo.FindAll();
         }
 
         
 
-        public void Update(Verlanglijstje item)
+        public void Update(Verlanglijst item)
         {
             _repo.Update(item);
         }

@@ -13,7 +13,7 @@ namespace MySite.Models
         [Required]
         public string Naam { get; set; }
         public bool Gedaan { get; set; }
-        public int LijstjeId { get; set; }
-        public Lijstje Lijstje { get; set; }
+        public int LijstId { get; set; }
+        public Lijst Lijst { get; set; }
     }
 }

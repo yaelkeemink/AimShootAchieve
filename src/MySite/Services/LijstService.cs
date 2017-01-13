@@ -9,24 +9,24 @@ using MySite.Services.ServiceInterfaces;
 namespace MySite.Services
 {
     public class LijstService
-        :ILijstService<Lijstje, int>
+        :ILijstService<Lijst, int>
     {
-        private readonly IRepository<Lijstje, int> _lijstRepo;
+        private readonly IRepository<Lijst, int> _lijstRepo;
         private readonly IRepository<LijstItem, int> _lijstItemRepo;
 
-        public LijstService(IRepository<Lijstje, int> lijstRepo, IRepository<LijstItem, int> lijstItemRepo)
+        public LijstService(IRepository<Lijst, int> lijstRepo, IRepository<LijstItem, int> lijstItemRepo)
         {
             _lijstRepo = lijstRepo;
             _lijstItemRepo = lijstItemRepo;
         }
-        public void Add(Lijstje item)
+        public void Add(Lijst item)
         {
             _lijstRepo.Insert(item);
         }
 
         public void AddItem(LijstItem item)
         {
-            var lijst = Get(item.LijstjeId);
+            var lijst = Get(item.LijstId);
             lijst.Items.Add(item);
             Update(lijst);
         }
@@ -37,12 +37,12 @@ namespace MySite.Services
             _lijstRepo.Delete(toDelete);
         }
 
-        public Lijstje Get(int id)
+        public Lijst Get(int id)
         {
             return _lijstRepo.Find(id);
         }
 
-        public IEnumerable<Lijstje> GetAll()
+        public IEnumerable<Lijst> GetAll()
         {
             return _lijstRepo.FindAll();
         }
@@ -50,13 +50,13 @@ namespace MySite.Services
         public int RemoveItem(int itemId)
         {
             var item = _lijstItemRepo.Find(itemId);
-            var lijst = _lijstRepo.Find(item.LijstjeId);
+            var lijst = _lijstRepo.Find(item.LijstId);
             lijst.Items.Remove(item);
             _lijstRepo.Update(lijst);
-            return lijst.LijstjeId;
+            return lijst.LijstId;
         }
 
-        public void Update(Lijstje item)
+        public void Update(Lijst item)
         {
             _lijstRepo.Update(item);
         }

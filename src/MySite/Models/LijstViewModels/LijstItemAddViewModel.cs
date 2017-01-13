@@ -14,7 +14,7 @@ namespace MySite.Models.LijstViewModels
         public string Wens4 { get; set; }
         public string Wens5 { get; set; }
 
-        public static implicit operator Lijstje(LijstItemAddViewModel model)
+        public static implicit operator Lijst(LijstItemAddViewModel model)
         {
             var lijstItems = new List<LijstItem>()
                 {
@@ -41,7 +41,7 @@ namespace MySite.Models.LijstViewModels
                     }
                 };
 
-            var lijst = new Lijstje()
+            var lijst = new Lijst()
             {
                 Naam = model.Naam,
                 Items = lijstItems.Where(a => a.Naam != null).ToList()

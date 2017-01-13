@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 namespace MySite.DAL
 {
     public class VerlangLijstjeRepository
-        : BaseRepository<Verlanglijstje, int, DatabaseContext>
+        : BaseRepository<Verlanglijst, int, DatabaseContext>
     {
         public VerlangLijstjeRepository(DatabaseContext context) : base(context)
         {
         }
 
-        protected override DbSet<Verlanglijstje> GetDbSet()
+        protected override DbSet<Verlanglijst> GetDbSet()
         {
             return _context.Verlanglijstje;
         }
 
-        protected override int GetKeyFrom(Verlanglijstje item)
+        protected override int GetKeyFrom(Verlanglijst item)
         {
             return item.Id;
         }

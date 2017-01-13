@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace MySite.Models
 {
-    public class Lijstje
+    public class Lijst
     {
-        public Lijstje()
+        public Lijst()
         {
             Items = new List<LijstItem>();
         }
-        public int LijstjeId { get; set; }
+        public int LijstId { get; set; }
         [Required]
         public string Naam { get; set; }
         public List<LijstItem> Items { get; set; }

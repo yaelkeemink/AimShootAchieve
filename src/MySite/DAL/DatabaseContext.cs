@@ -11,8 +11,8 @@ namespace MySite.DAL
     public class DatabaseContext : IdentityDbContext<ApplicationUser>
     {
         public virtual DbSet<Reis> Reizen { get; set; }
-        public virtual DbSet<Verlanglijstje> Verlanglijstje { get; set; }
-        public virtual DbSet<Lijstje> Lijstjes { get; set; }
+        public virtual DbSet<Verlanglijst> Verlanglijstje { get; set; }
+        public virtual DbSet<Lijst> Lijstjes { get; set; }
         public virtual DbSet<LijstItem> LijstItems { get; set; }
         public DatabaseContext()
         {

@@ -15,11 +15,11 @@ using MySite.Services.ServiceInterfaces;
 namespace MySite.Controllers
 {
     [Authorize]
-    public class LijstjeController : Controller
+    public class LijstController : Controller
     {
-        private readonly ILijstService<Lijstje, int> _service;
+        private readonly ILijstService<Lijst, int> _service;
 
-        public LijstjeController(ILijstService<Lijstje, int> service)
+        public LijstController(ILijstService<Lijst, int> service)
         {
             _service = service;    
         }
@@ -77,9 +77,9 @@ namespace MySite.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, Lijstje lijstje)
+        public IActionResult Edit(int id, Lijst lijstje)
         {
-            if (id != lijstje.LijstjeId)
+            if (id != lijstje.LijstId)
             {
                 return NotFound();
             }
@@ -92,7 +92,7 @@ namespace MySite.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!LijstjeExists(lijstje.LijstjeId))
+                    if (!LijstjeExists(lijstje.LijstId))
                     {
                         return NotFound();
                     }
@@ -101,7 +101,7 @@ namespace MySite.Controllers
             }
             return View(lijstje);
         }
-        public IActionResult Update(Lijstje model)
+        public IActionResult Update(Lijst model)
         {
             return null;
         }
@@ -109,7 +109,7 @@ namespace MySite.Controllers
         {
             var viewModel = new LijstItem()
             {
-                LijstjeId = id,
+                LijstId = id,
             };
             return View(viewModel);
         }
@@ -119,7 +119,7 @@ namespace MySite.Controllers
             _service.AddItem(item);
             var viewModel = new LijstItem()
             {
-                LijstjeId = item.LijstjeId,
+                LijstId = item.LijstId,
             };
             return View(viewModel);
         }

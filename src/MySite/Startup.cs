@@ -48,11 +48,11 @@ namespace MySite
             services.AddScoped<IRepository<Reis, int>, ReisRepository>();
             services.AddScoped<IService<Reis, int>, ReisService>();
 
-            services.AddScoped<IRepository<Verlanglijstje, int>, VerlangLijstjeRepository>();
-            services.AddScoped<IService<Verlanglijstje, int>, VerlanglijstjeService>();
+            services.AddScoped<IRepository<Verlanglijst, int>, VerlangLijstjeRepository>();
+            services.AddScoped<IService<Verlanglijst, int>, VerlanglijstjeService>();
 
-            services.AddScoped<IRepository<Lijstje, int>, LijstRepository>();
-            services.AddScoped<ILijstService<Lijstje, int>, LijstService>();
+            services.AddScoped<IRepository<Lijst, int>, LijstRepository>();
+            services.AddScoped<ILijstService<Lijst, int>, LijstService>();
 
             services.AddScoped<IRepository<LijstItem, int>, LijstItemRepository>();
 

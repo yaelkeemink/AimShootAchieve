@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MySite.Models
 {
-    public class Verlanglijstje
+    public class Verlanglijst
     {
         [Key]
         public int Id { get; set; }

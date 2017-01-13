@@ -17,14 +17,14 @@ namespace MySite.DAL
         public override LijstItem Find(int id)
         {
             return _context.LijstItems.Where(a => a.LijstItemId == id)
-                .Include(a => a.Lijstje)
+                .Include(a => a.Lijst)
                 .FirstOrDefault();
         }
 
         public override IEnumerable<LijstItem> FindAll()
         {
             return _context.LijstItems
-                .Include(a => a.Lijstje);
+                .Include(a => a.Lijst);
         }
 
         protected override DbSet<LijstItem> GetDbSet()
@@ -34,7 +34,7 @@ namespace MySite.DAL
 
         protected override int GetKeyFrom(LijstItem item)
         {
-            return item.LijstjeId;
+            return item.LijstId;
         }
     }
 }

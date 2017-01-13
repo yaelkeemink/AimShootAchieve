@@ -14,11 +14,11 @@ using MySite.Services.ServiceInterfaces;
 namespace MySite.Controllers
 {
     [Authorize]
-    public class VerlanglijstjeController : Controller
+    public class VerlanglijstController : Controller
     {
-        private readonly IService<Verlanglijstje, int> _service;
+        private readonly IService<Verlanglijst, int> _service;
 
-        public VerlanglijstjeController(IService<Verlanglijstje, int> service)
+        public VerlanglijstController(IService<Verlanglijst, int> service)
         {
             _service = service;    
         }
@@ -53,7 +53,7 @@ namespace MySite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,Link,Naam,Omschrijving,Prijs,Winkel")] Verlanglijstje verlanglijstje)
+        public IActionResult Create([Bind("Id,Link,Naam,Omschrijving,Prijs,Winkel")] Verlanglijst verlanglijstje)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace MySite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("Id,Link,Naam,Omschrijving,Prijs,Winkel")] Verlanglijstje verlanglijstje)
+        public IActionResult Edit(int id, [Bind("Id,Link,Naam,Omschrijving,Prijs,Winkel")] Verlanglijst verlanglijstje)
         {
             if (id != verlanglijstje.Id)
             {
