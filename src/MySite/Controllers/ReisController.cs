@@ -60,11 +60,11 @@ namespace MySite.Controllers
         }
         public IActionResult Aanpassen(int id)
         {
-            Reis viewmodel = _ReisService.Get(id);
+            ReisAanpassenViewModel viewmodel = _ReisService.Get(id);
             return View(viewmodel);
         }
         [HttpPost]
-        public IActionResult Aanpassen(Reis reis)
+        public IActionResult Aanpassen(ReisAanpassenViewModel reis)
         {
             if (ModelState.IsValid)
             {

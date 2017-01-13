@@ -32,8 +32,8 @@ namespace MySite.DAL
         {
             if (!optionsBuilder.IsConfigured)
             {
-                //optionsBuilder.UseSqlServer(@"server=sql2014-1.mijnhostingpartner.nl;Database=Keeminkmydb;uid=Keeminkadmin;password=maggot02;");
-                optionsBuilder.UseSqlServer(@"Server =.\\SQLEXPRESS;Database=DATABASENAME;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer(@"server=sql2014-1.mijnhostingpartner.nl;Database=Keeminkmydb;uid=Keeminkadmin;password=maggot02;");
+                //optionsBuilder.UseSqlServer(@"Server =.\\SQLEXPRESS;Database=DATABASENAME;Trusted_Connection=True;");
             }
         }
     }

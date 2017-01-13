@@ -1,32 +1,29 @@
 @model MySite.Models.Lijstje
 
-@{
-    ViewData["Title"] = "Details";
-}
-
-<h2>Details</h2><hr /> 
-
-<div>       
-    <dl>
-        <dt style="margin-bottom:10px;font-size:1.2em;">
-            @Html.DisplayFor(model => model.Naam)
-        </dt>
-        <dd>
-        </dd>
-        @foreach(var item in Model.Items)
-        {
+<h2>@Html.DisplayFor(model => model.Naam)</h2><hr /> 
+    <div>
+        <dl>
             <dd>
-                <div>
-                    @Html.CheckBoxFor(a => item.Gedaan)
-                    @Html.DisplayFor(a => item.Naam)
-                    <a asp-controller="Lijstje" asp-action="LijstItemVerwijderen" asp-route-id="@item.LijstItemId">Item Toevoegen>Verwijderen</a>
-
+            </dd>
+            @Html.HiddenFor(a => a.LijstjeId)
+            @Html.HiddenFor(a => a.Naam)
+            @foreach (var item in Model.Items)
+            {
+                
+            <dd>
+                <div class="list-item-container">
+                    <article>
+                        @Html.CheckBoxFor(a => item.Gedaan)
+                        @Html.DisplayFor(a => item.Naam)
+                    </article>
+                    <a asp-controller="Lijstje" asp-action="LijstItemVerwijderen" asp-route-id="@item.LijstItemId" class="btn btn-default">Verwijderen</a>
                 </div>
             </dd>
-        }
-    </dl>
-</div>
-<div>
-    <a class="btn btn-default" asp-controller="Lijstje" asp-action="LijstItemToevoegen" asp-route-id="@Model.LijstjeId">Item Toevoegen</a>
-    <a class="btn btn-default" asp-action="Index">Terug naar lijsten</a>
-</div>
+            }
+        </dl>
+    </div>
+    <div>
+        <a class="btn btn-default" asp-controller="Lijstje" asp-action="LijstItemToevoegen" asp-route-id="@Model.LijstjeId">Item Toevoegen</a>
+        <a class="btn btn-default" asp-action="Index">Terug naar lijsten</a>
+    </div>
+

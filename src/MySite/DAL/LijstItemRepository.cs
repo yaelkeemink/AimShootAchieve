@@ -16,7 +16,7 @@ namespace MySite.DAL
         }
         public override LijstItem Find(int id)
         {
-            return _context.LijstItems.Where(a => a.LijstjeId == id)
+            return _context.LijstItems.Where(a => a.LijstItemId == id)
                 .Include(a => a.Lijstje)
                 .FirstOrDefault();
         }

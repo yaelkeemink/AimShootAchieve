@@ -75,9 +75,6 @@ namespace MySite.Controllers
             return View(lijstje);
         }
 
-        // POST: Lijstjes/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Lijstje lijstje)
@@ -104,7 +101,10 @@ namespace MySite.Controllers
             }
             return View(lijstje);
         }
-
+        public IActionResult Update(Lijstje model)
+        {
+            return null;
+        }
         public IActionResult LijstItemToevoegen(int id)
         {
             var viewModel = new LijstItem()
@@ -117,7 +117,11 @@ namespace MySite.Controllers
         public IActionResult LijstItemToevoegen(LijstItem item)
         {
             _service.AddItem(item);
-            return RedirectToAction($"Details/{item.LijstjeId}");
+            var viewModel = new LijstItem()
+            {
+                LijstjeId = item.LijstjeId,
+            };
+            return View(viewModel);
         }
 
         public IActionResult LijstItemVerwijderen(int id)

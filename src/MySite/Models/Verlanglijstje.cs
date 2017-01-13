@@ -14,7 +14,7 @@ namespace MySite.Models
         public string Naam { get; set; }
 
         public string Omschrijving { get; set; }
-        public decimal Prijs { get; set; }
+        public decimal? Prijs { get; set; }
         public string Winkel { get; set; }
         public string Link { get; set; }
     }

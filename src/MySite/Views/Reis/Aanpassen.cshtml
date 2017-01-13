@@ -1,4 +1,4 @@
-@model MySite.Models.Reis
+@model MySite.Models.ReisViewModels.ReisAanpassenViewModel
 
 <form asp-action="Aanpassen">
     <div class="form-horizontal">
@@ -14,14 +14,14 @@
             </div>
         </div>        
         <div class="form-group">
-            <label asp-for="AankomstDatum" class="col-md-2 control-label"></label>
+            <label class="col-md-2 control-label">Aankomst datum</label>
             <div class="col-md-10">
                 <input type="date" asp-for="AankomstDatum" class="form-control" />
                 <span asp-validation-for="AankomstDatum" class="text-danger" />
             </div>
         </div>    
         <div class="form-group">
-            <label asp-for="VertrekDatum" class="col-md-2 control-label"></label>
+            <label class="col-md-2 control-label">Vertrek datum</label>
             <div class="col-md-10">
                 <input type="date" asp-for="VertrekDatum" class="form-control" />
                 <span asp-validation-for="VertrekDatum" class="text-danger" />
@@ -30,14 +30,7 @@
         <div class="form-group">
             <label asp-for="ReisStatus" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                @Html.DropDownListFor(a => a.ReisStatus,
-                     new SelectList(new[]
-                     {
-                        new SelectListItem {Text = "Wens", Value = "Wens" },
-                        new SelectListItem {Text = "Geboekt", Value = "Geboekt" },
-                        new SelectListItem {Text = "Gedaan", Value = "Gedaan" },
-                     }, "Text", "Value"),
-                     new { @class = "form-control" })
+                <select asp-for="ReisStatus" asp-items="@Model.Statussen"></select>
             </div>
         </div>
             <div class="form-group">

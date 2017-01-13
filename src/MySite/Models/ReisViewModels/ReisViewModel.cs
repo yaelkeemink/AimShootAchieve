@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace MySite.Models.ReisViewModels
         public List<Land> Landen { get; set; }
         public string AankomstDatum { get; set; }
         public string VertrekDatum { get; set; }
-        public string ReisStatus { get; set; }       
+        public string ReisStatus { get; set; }    
 
         public static implicit operator ReisViewModel(Reis model)
         {
