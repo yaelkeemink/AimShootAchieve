@@ -39,10 +39,15 @@ namespace MySite.Controllers
             {
                 return NotFound();
             }
-
+            //var viewModel = lijstje.Items;
             return View(lijstje);
         }
-
+        [HttpPost]
+        public IActionResult Update(Lijst lijst)
+        {
+            _service.Update(lijst);
+            return Redirect($"Details/{lijst.LijstId}");
+        }
         // GET: Lijstjes/Create
         public IActionResult Create()
         {
@@ -100,10 +105,6 @@ namespace MySite.Controllers
                 return RedirectToAction("Index");
             }
             return View(lijstje);
-        }
-        public IActionResult Update(Lijst model)
-        {
-            return null;
         }
         public IActionResult LijstItemToevoegen(int id)
         {

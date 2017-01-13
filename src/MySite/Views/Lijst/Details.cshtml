@@ -1,29 +1,18 @@
-@model MySite.Models.Lijstje
-
-<h2>@Html.DisplayFor(model => model.Naam)</h2><hr /> 
+@model Lijst
+<form asp-action="Update" method="post">
+    <h2>@Html.DisplayFor(model => model.Naam)</h2><hr />
     <div>
         <dl>
             <dd>
             </dd>
-            @Html.HiddenFor(a => a.LijstjeId)
-            @Html.HiddenFor(a => a.Naam)
-            @foreach (var item in Model.Items)
-            {
-                
-            <dd>
-                <div class="list-item-container">
-                    <article>
-                        @Html.CheckBoxFor(a => item.Gedaan)
-                        @Html.DisplayFor(a => item.Naam)
-                    </article>
-                    <a asp-controller="Lijstje" asp-action="LijstItemVerwijderen" asp-route-id="@item.LijstItemId" class="btn btn-default">Verwijderen</a>
-                </div>
-            </dd>
-            }
+            @Html.HiddenFor(a => Model.LijstId)
+            @Html.HiddenFor(a => Model.Naam)
+            @Html.EditorFor(a => a.Items)
         </dl>
     </div>
     <div>
-        <a class="btn btn-default" asp-controller="Lijstje" asp-action="LijstItemToevoegen" asp-route-id="@Model.LijstjeId">Item Toevoegen</a>
+        <a class="btn btn-default" asp-controller="Lijst" asp-action="LijstItemToevoegen" asp-route-id="@Model.LijstId">Item Toevoegen</a>
         <a class="btn btn-default" asp-action="Index">Terug naar lijsten</a>
+        <input type="submit" value="Opslaan" class="btn btn-default" />
     </div>
-
+</form>

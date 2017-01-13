@@ -1,4 +1,4 @@
-@model IEnumerable<MySite.Models.Lijstje>
+@model IEnumerable<MySite.Models.Lijst>
 
 @{
     ViewData["Title"] = "Index";
@@ -25,9 +25,9 @@
                 @Html.DisplayFor(modelItem => item.Naam)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.LijstjeId">Naam wijzigen</a> |
-                <a asp-action="Details" asp-route-id="@item.LijstjeId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.LijstjeId">Verwijderen</a>
+                <a asp-action="Edit" asp-route-id="@item.LijstId">Naam wijzigen</a> |
+                <a asp-action="Details" asp-route-id="@item.LijstId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.LijstId">Verwijderen</a>
             </td>
         </tr>
 }

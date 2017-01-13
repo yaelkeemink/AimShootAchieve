@@ -1,4 +1,4 @@
-@model MySite.Models.Lijstje
+@model MySite.Models.Lijst
 
 @{
     ViewData["Title"] = "Edit";
@@ -9,7 +9,7 @@
 <form asp-action="Edit">
     <div class="form-horizontal">        
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="LijstjeId" />
+    <input type="hidden" asp-for="LijstId" />
     @Html.HiddenFor(a => a.Items)
         <div class="form-group">
             <label asp-for="Naam" class="col-md-2 control-label"></label>
