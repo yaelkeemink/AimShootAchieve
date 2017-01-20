@@ -9,13 +9,8 @@
 <div>
     <h4>Verlanglijstje</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Link)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Link)
-        </dd>
+    <dl class="dl-horizontal">       
+       
         <dt>
             @Html.DisplayNameFor(model => model.Naam)
         </dt>
@@ -39,6 +34,12 @@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Winkel)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Link)
+        </dt>
+        <dd>
+            <a href="@Model.Link" target="_blank">@Html.DisplayFor(model => model.Link)</a>
         </dd>
     </dl>
 </div>
