@@ -100,7 +100,7 @@ namespace _003_AimShootAchieve.Facade
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Account}/{action=Login}/{id?}");
+                    template: "{controller=Home}/{action=index}/{id?}");
             });
         }
     }
