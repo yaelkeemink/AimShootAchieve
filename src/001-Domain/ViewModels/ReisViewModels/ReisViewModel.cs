@@ -23,6 +23,7 @@ namespace _001_Domain.ViewModels.ReisViewModels
         public string VertrekDatum { get; set; }
         public Status ReisStatus { get; set; }
         public int ResiStatusInt { get; set; }
+        public bool Prive { get; set; }
 
         public static implicit operator ReisViewModel(Reis model)
         {
@@ -34,7 +35,8 @@ namespace _001_Domain.ViewModels.ReisViewModels
                 ReisStatus = model.ReisStatus,
                 AankomstDatum = model.AankomstDatum?.ToString("yyyy-MM-dd"),
                 VertrekDatum = model.VertrekDatum?.ToString("yyyy-MM-dd"),
-                ResiStatusInt = model.ReisStatus == Status.Wens ? 1 : model.ReisStatus == Status.Geboekt ? 2 : 3
+                ResiStatusInt = model.ReisStatus == Status.Wens ? 1 : model.ReisStatus == Status.Geboekt ? 2 : 3,
+                Prive = model.Prive,
             };
         }
     }

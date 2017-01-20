@@ -10,6 +10,7 @@ namespace _001_Domain.Interfaces
     {        
         void Add(Reis item);
         IEnumerable<Reis> GetAll(string userId);
+        IEnumerable<Reis> GetAllPublic();
         Reis Get(int id, string userId);
         void Update(Reis item);
         void Delete(int id, string userId);

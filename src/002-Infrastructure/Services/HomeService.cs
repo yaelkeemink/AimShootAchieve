@@ -11,20 +11,20 @@ namespace _002_Infrastructure.Services
     public class HomeService
        : IHomeService
     {
-        private IRepository<Lijst, int> _lijstjeRepo;
+        private IRepository<Lijst, int> _lijstRepo;
         private IRepository<Reis, int> _reisRepo;
         private IRepository<Verlanglijst, int> _verlanglijstRepo;
 
         public HomeService(IRepository<Lijst, int> lijstjeRepo, IRepository<Reis, int> reisRepo, IRepository<Verlanglijst, int> verlanglijstRepo)
         {
-            _lijstjeRepo = lijstjeRepo;
+            _lijstRepo = lijstjeRepo;
             _reisRepo = reisRepo;
             _verlanglijstRepo = verlanglijstRepo;
         }
 
         public IndexHomeViewModel GetAantallen(string userId)
         {
-            int aantalLijsten = _lijstjeRepo.FindAll(userId).Count();
+            int aantalLijsten = _lijstRepo.FindAll(userId).Count();
             int aantalVerlangLijst = _verlanglijstRepo.FindAll(userId).Count();
             IEnumerable<Reis> reizen = _reisRepo.FindAll(userId);
             return new IndexHomeViewModel()
@@ -34,6 +34,10 @@ namespace _002_Infrastructure.Services
                 AantalReizenGewenst = reizen.Where(a => a.ReisStatus == Status.Wens).Count(),
                 AantalReizenGeboekt = reizen.Where(a => a.ReisStatus == Status.Geboekt).Count(),
                 AantalReizenGedaan = reizen.Where(a => a.ReisStatus == Status.Gedaan).Count(),
+
+                AantalPubliekeReizen = _lijstRepo.FindAllPublic().Count(),
+                AantalPubliekeLijstjes = _lijstRepo.FindAllPublic().Count(),
+                AantalPubliekeVerlanglijstjes = 0,
             };
         }
     }

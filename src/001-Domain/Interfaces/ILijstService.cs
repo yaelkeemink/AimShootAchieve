@@ -10,6 +10,7 @@ namespace _001_Domain.Interfaces
     {
         void Add(Lijst item);
         IEnumerable<Lijst> GetAll(string userId);
+        IEnumerable<Lijst> GetAllPublic();
         Lijst Get(int id, string userId);
         void Update(Lijst item);
         void AddItem(LijstItem item);

@@ -25,6 +25,7 @@ namespace _001_Domain.ViewModels.ReisViewModels
         public DateTime? VertrekDatum { get; set; }
         public Status ReisStatus { get; set; }
         public SelectList Statussen { get; set; }
+        public bool Prive { get; set; }
 
         public static implicit operator ReisAanpassenViewModel(Reis model)
         {
@@ -37,6 +38,7 @@ namespace _001_Domain.ViewModels.ReisViewModels
                 AankomstDatum = model.AankomstDatum,
                 VertrekDatum = model.VertrekDatum,
                 UserId = model.UserId,
+                Prive = model.Prive,
                 Statussen = new SelectList(new List<string>() { "Wens", "Geboekt", "Gedaan" }),
             };
         }
@@ -52,6 +54,7 @@ namespace _001_Domain.ViewModels.ReisViewModels
                 AankomstDatum = model.AankomstDatum,
                 VertrekDatum = model.VertrekDatum,
                 UserId = model.UserId,
+                Prive = model.Prive,
             };
         }
     }

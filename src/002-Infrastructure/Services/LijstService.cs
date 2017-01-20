@@ -61,5 +61,10 @@ namespace _002_Infrastructure.Services
         {
             _lijstRepo.Update(item);
         }
+
+        public IEnumerable<Lijst> GetAllPublic()
+        {
+            return _lijstRepo.FindAllPublic();
+        }
     }
 }

@@ -27,9 +27,15 @@
             @Html.DisplayFor(model => model.VertrekDatum)
         </dd>
         <dt>
+            @Html.DisplayNameFor(model => model.Prive)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Prive)
+        </dd> 
+        <dt>
             Bestemmingen
         </dt>
-            @Html.EditorFor(a => a.Landen)        
+        @Html.EditorFor(a => a.Landen)     
     </dl>
 </div>
 <div>

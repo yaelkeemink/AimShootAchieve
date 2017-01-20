@@ -13,6 +13,11 @@
 .city{
     font-size: 1.2em;
 }
+.flexContainer{
+    display: flex;  
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 .flexDahboardRef{
     background-color:lightskyblue;
     flex-direction: column;
@@ -26,6 +31,17 @@
 }
 .flexDahboardRef p{
     font-size:1.7em;
+}
+.flexReisContainer{
+    display: inline-flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    background-color:lightgray;
+    padding: 5px;
+    border-radius: 5px;
+    height:100px;
 }
 .detailContainer{
     display:flex;
@@ -62,22 +78,6 @@ input,
 select,
 textarea {
     max-width: 280px;
-}
-.flexContainer{
-    display: flex;  
-    flex-wrap: wrap;
-    justify-content: flex-start;
-}
-.flexReisContainer{
-    display: inline-flex;
-    flex-direction: column;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-right: 10px;
-    background-color:lightgray;
-    padding: 5px;
-    border-radius: 5px;
-    height:100px;
 }
 .pageHeader{
     font-size:2em;

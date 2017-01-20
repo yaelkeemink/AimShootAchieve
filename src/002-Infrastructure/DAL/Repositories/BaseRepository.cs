@@ -61,5 +61,10 @@ namespace _002_Infrastructure.DAL.Repositories
         {
             _context.Dispose();
         }
+
+        public IEnumerable<Entity> FindAllPublic()
+        {
+            return GetDbSet().Where(a => !a.Prive);
+        }
     }
 }
