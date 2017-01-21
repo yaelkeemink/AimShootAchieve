@@ -25,5 +25,13 @@ namespace _002_Infrastructure.DAL.Repositories
         {
             return item.Id;
         }
+
+        public override Verlanglijst Find(int id, string userId)
+        {
+            return GetDbSet()
+                .Include(a => a.VerlanglijstItems)
+                .Include(a => a.User)
+                .Where(a => a.UserId == userId).Single(a => GetKeyFrom(a).Equals(id));
+        }
     }
 }

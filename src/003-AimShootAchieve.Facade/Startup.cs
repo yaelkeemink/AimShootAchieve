@@ -51,11 +51,12 @@ namespace _003_AimShootAchieve.Facade
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IRepository<Verlanglijst>, VerlanglijstRepository>();
+            services.AddScoped<IRepository<VerlanglijstItem>, VerlanglijstItemRepository>();
             services.AddScoped<IRepository<Lijst>, LijstRepository>();
             services.AddScoped<IRepository<LijstItem>, LijstItemRepository>();
             services.AddScoped<IRepository<Reis>, ReisRepository>();
 
-            services.AddScoped<IService<Verlanglijst>, VerlanglijstService>();
+            services.AddScoped<IVerlanglijstService, VerlanglijstService>();
             services.AddScoped<ILijstService, LijstService>();
             services.AddScoped<IHomeService, HomeService>();
             services.AddScoped<IReisService, ReisService>();

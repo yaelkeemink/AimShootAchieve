@@ -8,38 +8,67 @@ using System.Threading.Tasks;
 namespace _002_Infrastructure.Services
 {
     public class VerlanglijstService
-        : IService<Verlanglijst>
+        : IVerlanglijstService
     {
-        private IRepository<Verlanglijst> _repo;
+        private readonly IRepository<VerlanglijstItem> _itemRepo;
+        private readonly IRepository<Verlanglijst> _verlanglijstRepo;
 
-        public VerlanglijstService(IRepository<Verlanglijst> repo)
+        public VerlanglijstService(IRepository<Verlanglijst> verlanglijstRepo, IRepository<VerlanglijstItem> itemRepo)
         {
-            _repo = repo;
+            _verlanglijstRepo = verlanglijstRepo;
+            _itemRepo = itemRepo;
         }
         public void Add(Verlanglijst item)
         {
-            _repo.Insert(item);
+            _verlanglijstRepo.Insert(item);
         }
 
         public void Delete(int id, string userId)
         {
-            var toDelete = _repo.Find(id, userId);
-            _repo.Delete(toDelete);
+            var toDelete = _verlanglijstRepo.Find(id, userId);
+            _verlanglijstRepo.Delete(toDelete);
         }
 
         public Verlanglijst Get(int id, string userId)
         {
-            return _repo.Find(id, userId);
+            return _verlanglijstRepo.Find(id, userId);
         }
 
         public IEnumerable<Verlanglijst> GetAll(string userId)
         {
-            return _repo.FindAll(userId);
+            return _verlanglijstRepo.FindAll(userId);
         }
-        
-        public void Update(Verlanglijst item)
+
+        public VerlanglijstItem GetItem(int id, string userId)
         {
-            _repo.Update(item);
+            return _itemRepo.Find(id, userId);
+        }
+
+        public void Update(Verlanglijst model)
+        {
+            var verlanglijst = _verlanglijstRepo.Find(model.Id, model.UserId);
+            _verlanglijstRepo.Update(verlanglijst);
+        }
+
+        public void Update(VerlanglijstItem item)
+        {
+            var verlanglijst = _verlanglijstRepo.Find(item.Id, item.UserId);
+            item.Id = 0;
+            verlanglijst.VerlanglijstItems.Add(item);            
+            _verlanglijstRepo.Update(verlanglijst);
+        }
+
+        public void UpdateItem(VerlanglijstItem item, string v)
+        {
+            _itemRepo.Update(item);
+        }
+
+        public int VerwijderItem(int id, string userId)
+        {
+            var item = _itemRepo.Find(id, userId);
+            var verlanglijst = Get(item.VerlanglijstId, userId);
+            _itemRepo.Delete(item);
+            return verlanglijst.Id;
         }
     }
 }

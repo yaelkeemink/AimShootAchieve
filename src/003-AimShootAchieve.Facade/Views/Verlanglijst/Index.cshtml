@@ -7,20 +7,17 @@
 <h2>Mijn verlanglijstje</h2><hr />
 
 <p>
-    <a class="btn btn-default" asp-action="Aanmaken">Nieuwe wens</a>        
+    <a class="btn btn-default" asp-action="Aanmaken">Nieuwe verlanglijst</a>        
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Naam)
-            </th>
+            </th>   
             <th>
-                @Html.DisplayNameFor(model => model.Prijs)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Link)
-            </th>
+                @Html.DisplayNameFor(model => model.Prive)
+            </th>    
             <th></th>
         </tr>
     </thead>
@@ -32,13 +29,7 @@
                     @Html.DisplayFor(modelItem => item.Naam)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Prijs)
-                </td>
-                <td>
-                    @if (item.Link != "" && item.Link != null)
-                {
-                        <a href="@item.Link" target="_blank">klik mij</a>
-                    }
+                    @Html.DisplayFor(modelItem => item.Prive)
                 </td>
                 <td>
                     <a asp-action="Aanpassen" asp-route-id="@item.Id">Wijzig</a> |

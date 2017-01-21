@@ -9,6 +9,7 @@ namespace _002_AimShootAchieve.Infrastructure.DAL
     {
         public virtual DbSet<Reis> Reizen { get; set; }
         public virtual DbSet<Verlanglijst> Verlanglijsten { get; set; }
+        public virtual DbSet<VerlanglijstItem> VerlanglijstItems { get; set; }
         public virtual DbSet<Lijst> Lijsten { get; set; }
         public virtual DbSet<LijstItem> LijstItems { get; set; }
         public DatabaseContext()

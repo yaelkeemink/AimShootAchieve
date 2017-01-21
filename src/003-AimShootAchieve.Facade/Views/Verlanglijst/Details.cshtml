@@ -1,50 +1,70 @@
 ﻿@model Verlanglijst
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Index";
 }
 
-<h2>Details</h2>
+<h2>@Model.Naam verlanglijstje</h2><hr />
 
-<div>
-    <h4>Verlanglijstje</h4>
-    <hr />
-    <dl class="dl-horizontal">       
-       
-        <dt>
-            @Html.DisplayNameFor(model => model.Naam)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Naam)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Omschrijving)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Omschrijving)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Prijs)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Prijs)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Winkel)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Winkel)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Link)
-        </dt>
-        <dd>
-            <a href="@Model.Link" target="_blank">@Html.DisplayFor(model => model.Link)</a>
-        </dd>
-    </dl>
-</div>
-<div>
-    <a class="btn btn-default" asp-action="Index">Terug</a> |
-    <a class="btn btn-default" asp-action="Aanpassen" asp-route-id="@Model.Id">Aanpassen</a>
-    
-</div>
+<p>
+    <a class="btn btn-default" asp-action="index">Terug</a>
+    <a class="btn btn-default" asp-action="WensToevoegen" asp-route-id="@Model.Id">Nieuwe wens</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VerlanglijstItems.FirstOrDefault().Naam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VerlanglijstItems.FirstOrDefault().Omschrijving)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VerlanglijstItems.FirstOrDefault().Prive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VerlanglijstItems.FirstOrDefault().Winkel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VerlanglijstItems.FirstOrDefault().Link)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VerlanglijstItems.FirstOrDefault().Prive)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.VerlanglijstItems)
+        {
+            @Html.HiddenFor(a => a.Id)
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Naam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Omschrijving)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prijs)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Winkel)
+                </td>
+                <td>
+                    @if (item.Link != "" && item.Link != null)
+                    {
+                        <a href="@item.Link" target="_blank">klik mij</a>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prive)
+                </td>
+                <td>
+                    <a asp-action="WensAanpassen" asp-route-id="@item.Id">Wijzig</a> |
+                    <a asp-action="VerwijderWens" asp-route-id="@item.Id">Verwijder</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

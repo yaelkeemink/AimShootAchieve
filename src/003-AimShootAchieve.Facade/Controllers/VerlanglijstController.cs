@@ -1,130 +1,106 @@
-﻿using _001_Domain.Entities;
-using _001_Domain.Interfaces;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using _001_Domain.Interfaces;
+using _001_Domain.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
+using _001_Domain.ViewModels.VerlanglijstViewModels;
 
 namespace _003_AimShootAchieve.Facade.Controllers
 {
-    [Authorize]
     public class VerlanglijstController
         : BaseController
     {
-        private readonly IService<Verlanglijst> _service;
+        private readonly IVerlanglijstService _service;
 
-        public VerlanglijstController(IService<Verlanglijst> service,
-            UserManager<ApplicationUser> userManager, 
+        public VerlanglijstController(IVerlanglijstService service,
+            UserManager<ApplicationUser> userManager,
             ILoggerFactory loggerFactory)
             : base(userManager, loggerFactory)
         {
             _service = service;
         }
 
-        // GET: Verlanglijstjes
         public IActionResult Index()
         {
             var viewModel = _service.GetAll(GetUserId());
             return View(viewModel);
         }
 
-        // GET: Verlanglijstjes/Details/5
         public IActionResult Details(int id)
         {
             var viewModel = _service.Get(id, GetUserId());
-            if (viewModel == null)
-            {
-                return NotFound();
-            }
-
             return View(viewModel);
         }
 
-        // GET: Verlanglijstjes/Create
         public IActionResult Aanmaken()
         {
-            return View();
-        }
-
-        // POST: Verlanglijstjes/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Aanmaken([Bind("Id,Link,Naam,Omschrijving,Prijs,Winkel")] Verlanglijst verlanglijstje)
-        {
-            if (ModelState.IsValid)
+            var viewModel = new VerlanglijstViewModel()
             {
-                verlanglijstje.UserId = GetUserId();
-                _service.Add(verlanglijstje);
-                return RedirectToAction("Index");
-            }
-            return View(verlanglijstje);
+                UserId = GetUserId(),
+            };
+            return View(viewModel);
+        }
+        [HttpPost]
+        public IActionResult Aanmaken(VerlanglijstViewModel model)
+        {
+            Verlanglijst verlanglijst = model;
+            _service.Add(verlanglijst);
+            return RedirectToAction($"Details/{verlanglijst.Id}");
         }
 
-        // GET: Verlanglijstjes/Edit/5
         public IActionResult Aanpassen(int id)
         {
-            var verlanglijstje = _service.Get(id, GetUserId());
-            if (verlanglijstje == null)
-            {
-                return NotFound();
-            }
-            return View(verlanglijstje);
+            var viewModel = _service.Get(id, GetUserId());
+            return View(viewModel);
         }
 
-        // POST: Verlanglijstjes/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Aanpassen(int id, Verlanglijst verlanglijstje)
+        [HttpPut]
+        public IActionResult Aanpassen(Verlanglijst item)
         {
-            if (id != verlanglijstje.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _service.Update(verlanglijstje);
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!VerlanglijstjeExists(verlanglijstje.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction("Index");
-            }
-            return View(verlanglijstje);
+            _service.Update(item);
+            return RedirectToAction("Index");
         }
 
-        // GET: Verlanglijstjes/Delete/5
+        public IActionResult WensToevoegen(int id)
+        {
+            var viewModel = new VerlanglijstItem()
+            {
+                VerlanglijstId = id,
+                UserId = GetUserId(),
+            };
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult WensToevoegen(VerlanglijstItem model)
+        {
+            _service.Update(model);
+            return RedirectToAction($"Details/{model.VerlanglijstId}");
+        }
+
+        public IActionResult WensAanpassen(int id)
+        {
+            VerlanglijstItem viewModel = _service.GetItem(id, GetUserId());
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult WensAanpassen(VerlanglijstItem item)
+        {
+            _service.UpdateItem(item, GetUserId());
+            return RedirectToAction($"Details/{item.VerlanglijstId}");
+        }
+
         public IActionResult Verwijderen(int id)
         {
-            var verlanglijstje = _service.Get(id, GetUserId());
-            if (verlanglijstje == null)
-            {
-                return NotFound();
-            }
-
-            return View(verlanglijstje);
+            var viewModel = _service.Get(id, GetUserId());
+            return View(viewModel);
         }
 
-        // POST: Verlanglijstjes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
@@ -133,9 +109,10 @@ namespace _003_AimShootAchieve.Facade.Controllers
             return RedirectToAction("Index");
         }
 
-        private bool VerlanglijstjeExists(int id)
+        public IActionResult VerwijderWens(int id)
         {
-            return _service.Get(id, GetUserId()) != null;
+            int verlanglijstId = _service.VerwijderItem(id, GetUserId());
+            return RedirectToAction($"Details/{verlanglijstId}");
         }
     }
 }

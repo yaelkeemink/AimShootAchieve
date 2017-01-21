@@ -6,7 +6,7 @@
 
 <h2>Verander wens</h2><hr />
 
-<form asp-action="Aanpassen">
+<form asp-action="Aanpassen" method="put">
     <div class="form-horizontal">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <input type="hidden" asp-for="Id" />
@@ -20,31 +20,10 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Omschrijving" class="col-md-2 control-label"></label>
+            <label asp-for="Prive" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Omschrijving" class="form-control" />
-                <span asp-validation-for="Omschrijving" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Prijs" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Prijs" class="form-control" />
-                <span asp-validation-for="Prijs" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Winkel" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Winkel" class="form-control" />
-                <span asp-validation-for="Winkel" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Link" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Link" class="form-control" />
-                <span asp-validation-for="Link" class="text-danger" />
+                <input asp-for="Prive" class="form-control" />
+                <span asp-validation-for="Prive" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
