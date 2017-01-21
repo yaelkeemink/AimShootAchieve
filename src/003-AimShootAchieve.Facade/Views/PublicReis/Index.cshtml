@@ -1,0 +1,15 @@
+﻿@model PublicReisViewModel
+
+<h2>Mijn reizen</h2><hr />
+<form asp-action="Index" style="width:100%;">
+    <div class="form-group">
+        <label asp-for="Naam" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <select asp-for="Naam" asp-items="@Model.Namen" class="form-control"></select>
+        </div>
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Zoek" class="btn btn-default"/>
+        </div>
+    </div>
+</form>
+@Html.EditorFor(a => a.Reizen)

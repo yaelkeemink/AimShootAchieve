@@ -3,10 +3,12 @@ using _001_Domain.Entities;
 using _001_Domain.Interfaces;
 using _002_AimShootAchieve.Infrastructure.DAL;
 using _002_AimShootAchieve.Infrastructure.Services;
+using _002_Infrastructure.DAL;
 using _002_Infrastructure.DAL.Repositories;
 using _002_Infrastructure.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -57,8 +59,16 @@ namespace _003_AimShootAchieve.Facade
             services.AddScoped<ILijstService, LijstService>();
             services.AddScoped<IHomeService, HomeService>();
             services.AddScoped<IReisService, ReisService>();
+            services.AddScoped<IPublicReisService, PublicReisService>();
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>(
+                o => {
+                    o.Password.RequireDigit = false;
+                    o.Password.RequireUppercase = false;
+                    o.Password.RequireNonAlphanumeric = false;
+                    o.Password.RequireLowercase = false;
+                    o.Password.RequiredLength = 6;    
+                } )
                 .AddEntityFrameworkStores<DatabaseContext>()
                 .AddDefaultTokenProviders();
 
@@ -70,7 +80,7 @@ namespace _003_AimShootAchieve.Facade
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, UserManager<ApplicationUser> manager)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -102,6 +112,8 @@ namespace _003_AimShootAchieve.Facade
                     name: "default",
                     template: "{controller=Home}/{action=index}/{id?}");
             });
+
+            DatabaseInitializer.Initialize(manager);
         }
     }
 }

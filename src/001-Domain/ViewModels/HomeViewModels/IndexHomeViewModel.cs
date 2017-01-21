@@ -14,8 +14,10 @@ namespace _001_Domain.ViewModels.HomeViewModels
         public int AantalLijstjes { get; set; }
         public int AantalVerlanglijstjes { get; set; }
 
-        public int AantalPubliekeReizen { get; set; }
-        public int AantalPubliekeLijstjes { get; set; }
-        public int AantalPubliekeVerlanglijstjes { get; set; }
+        public int AantalPubliekeReizenYouri { get; set; }
+        public int AantalPubliekeReizenJane { get; set; }
+        public int AantalPubliekeReizenEla { get; set; }
+        public int AantalPubliekeReizenLouis { get; set; }
+        public int AantalPubliekeReizenYael { get; set; }
     }
 }

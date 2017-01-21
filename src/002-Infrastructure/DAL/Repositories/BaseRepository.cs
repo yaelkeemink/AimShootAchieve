@@ -26,18 +26,21 @@ namespace _002_Infrastructure.DAL.Repositories
 
         public virtual IQueryable<Entity> FindBy(Expression<Func<Entity, bool>> filter, string userId)
         {
-            return GetDbSet().Where(a => a.UserId == userId)
+            return GetDbSet().Include(a => a.User)
+                .Where(a => a.UserId == userId)
                 .Where(filter);
         }
 
         public virtual Entity Find(Key id, string userId)
         {
-            return GetDbSet().Where(a => a.UserId == userId).Single(a => GetKeyFrom(a).Equals(id));
+            return GetDbSet().Include(a => a.User)
+                .Where(a => a.UserId == userId).Single(a => GetKeyFrom(a).Equals(id));
         }
 
         public virtual IQueryable<Entity> FindAll(string userId)
         {
-            return GetDbSet().Where(a => a.UserId == userId);
+            return GetDbSet().Include(a => a.User)
+                .Where(a => a.UserId == userId);
         }
 
         public virtual void Insert(Entity item)
@@ -46,12 +49,12 @@ namespace _002_Infrastructure.DAL.Repositories
             _context.SaveChanges();
         }
 
-        public void Update(Entity item)
+        public virtual void Update(Entity item)
         {
             _context.Update(item);
             _context.SaveChanges();
         }
-        public void Delete(Entity item)
+        public virtual void Delete(Entity item)
         {
             _context.Remove(item);
             _context.SaveChanges();
@@ -62,9 +65,19 @@ namespace _002_Infrastructure.DAL.Repositories
             _context.Dispose();
         }
 
-        public IEnumerable<Entity> FindAllPublic()
+        public virtual IEnumerable<Entity> FindAllPublic(string naam)
         {
-            return GetDbSet().Where(a => !a.Prive);
+            return GetDbSet()
+                .Include(a => a.User)
+                .Where(a => !a.Prive && a.User.UserName == naam);
+        }
+
+        public virtual Entity FindPublic(int id)
+        {
+            return GetDbSet()
+                .Include(a => a.User)
+                .Where(a => a.Id == id && !a.Prive)
+                .SingleOrDefault();
         }
     }
 }

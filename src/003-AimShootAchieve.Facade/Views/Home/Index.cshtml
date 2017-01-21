@@ -1,6 +1,6 @@
 ﻿@model IndexHomeViewModel
 
-<div class="flexContainer">
+<div class="flexContainerDashboard">
     <a class="flexDahboardRef" href="/reis/index">
         <div>
             <h1>Mijn reizen</h1>
@@ -21,23 +21,14 @@
             <p>aantal: @Html.DisplayFor(a => a.AantalVerlanglijstjes)</p>
         </div>
     </a>
-    <!--<a class="flexDahboardRef" href="/reis/index">
+    <a class="flexDahboardRef" href="/publicreis/index">
         <div>
             <h1>Publieke reizen</h1>
-            <p>Aantal: @Html.DisplayFor(a => a.AantalPubliekeReizen)</p>
+            <p>Aantal Jane: @Html.DisplayFor(a => a.AantalPubliekeReizenJane)</p>
+            <p>Aantal Youri: @Html.DisplayFor(a => a.AantalPubliekeReizenYouri)</p>
+            <p>Aantal Ela: @Html.DisplayFor(a => a.AantalPubliekeReizenEla)</p>
+            <p>Aantal Louis: @Html.DisplayFor(a => a.AantalPubliekeReizenLouis)</p>
+            <p>Aantal Yael: @Html.DisplayFor(a => a.AantalPubliekeReizenYael)</p>
         </div>
     </a>
-    <a class="flexDahboardRef" href="/lijst/index">
-        <div>
-            <h1>Publieke lijstjes</h1>
-            <p>Aantal: @Html.DisplayFor(a => a.AantalPubliekeLijstjes)</p>
-        </div>
-    </a>
-    <a class="flexDahboardRef" href="/verlanglijst/index">
-        <div>
-            <h1>Publieke Verlanglijstjes</h1>
-            <p>aantal: @Html.DisplayFor(a => a.AantalPubliekeVerlanglijstjes)</p>
-        </div>
-    </a>
-        -->
 </div>

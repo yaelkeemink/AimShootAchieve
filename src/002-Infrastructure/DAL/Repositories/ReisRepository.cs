@@ -29,14 +29,24 @@ namespace _002_Infrastructure.DAL.Repositories
         public override IQueryable<Reis> FindAll(string userId)
         {
             return _context.Reizen.Include(a => a.Landen)
+                .Include(a => a.User)
                 .Where(a => a.UserId == userId);
         }
 
         public override Reis Find(int id, string userId)
         {
             return _context.Reizen.Include(a => a.Landen)
+                .Include(a => a.User)
                 .Where(a => a.Id == id && a.UserId == userId)
                 .FirstOrDefault();
+        }
+        public override Reis FindPublic(int id)
+        {
+            return GetDbSet()
+                .Include(a => a.Landen)
+                .Include(a => a.User)
+                .Where(a => a.Id == id && !a.Prive)
+                .SingleOrDefault();
         }
     }
 }

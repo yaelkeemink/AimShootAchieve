@@ -36,12 +36,7 @@ namespace _002_Infrastructure.Services
         {
             return _repo.FindAll(userId);
         }
-
-        public IEnumerable<Verlanglijst> GetAllPublic()
-        {
-            return _repo.FindAllPublic();
-        }
-
+        
         public void Update(Verlanglijst item)
         {
             _repo.Update(item);

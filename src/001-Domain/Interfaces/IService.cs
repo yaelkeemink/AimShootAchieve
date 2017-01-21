@@ -10,7 +10,6 @@ namespace _001_Domain.Interfaces
     {
         void Add(Entity item);
         IEnumerable<Entity> GetAll(string userId);
-        IEnumerable<Entity> GetAllPublic();
         Entity Get(Key id, string userId);
         void Update(Entity item);
         void Delete(Key id, string userId);

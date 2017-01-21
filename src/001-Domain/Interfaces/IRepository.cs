@@ -11,12 +11,12 @@ namespace _001_Domain.Interfaces
         where TEntity: class
     {
         IQueryable<TEntity> FindAll(string userId);
-        IEnumerable<TEntity> FindAllPublic();
+        IEnumerable<TEntity> FindAllPublic(string userName);
 
         IQueryable<TEntity> FindBy(Expression<Func<TEntity, bool>> filter, string userId);
 
         TEntity Find(TKey id, string userId);
-
+        TEntity FindPublic(int id);
         void Insert(TEntity item);
         void Update(TEntity item);
 

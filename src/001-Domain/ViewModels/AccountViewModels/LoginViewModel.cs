@@ -8,9 +8,8 @@ namespace _001_.Domain.ViewModels.AccountViewModels
 {
     public class LoginViewModel
     {
-        [Required(ErrorMessage ="Email is verplicht!")]
-        [EmailAddress(ErrorMessage = "Email is ongeldig!")]
-        public string Email { get; set; }
+        [Required(ErrorMessage ="Naam is verplicht!")]
+        public string Naam { get; set; }
 
         [Required(ErrorMessage ="Wachtwoord is verplicht!")]
         [DataType(DataType.Password)]

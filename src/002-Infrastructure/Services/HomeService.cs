@@ -35,9 +35,11 @@ namespace _002_Infrastructure.Services
                 AantalReizenGeboekt = reizen.Where(a => a.ReisStatus == Status.Geboekt).Count(),
                 AantalReizenGedaan = reizen.Where(a => a.ReisStatus == Status.Gedaan).Count(),
 
-                AantalPubliekeReizen = _lijstRepo.FindAllPublic().Count(),
-                AantalPubliekeLijstjes = _lijstRepo.FindAllPublic().Count(),
-                AantalPubliekeVerlanglijstjes = 0,
+                AantalPubliekeReizenEla = _reisRepo.FindAllPublic("Ela").Count(),
+                AantalPubliekeReizenJane = _reisRepo.FindAllPublic("Jane").Count(),
+                AantalPubliekeReizenLouis = _reisRepo.FindAllPublic("Louis").Count(),
+                AantalPubliekeReizenYael = _reisRepo.FindAllPublic("Yael").Count(),
+                AantalPubliekeReizenYouri = _reisRepo.FindAllPublic("Youri").Count(),
             };
         }
     }

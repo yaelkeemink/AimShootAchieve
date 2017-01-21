@@ -60,11 +60,6 @@ namespace _002_Infrastructure.Services
         public void Update(Lijst item)
         {
             _lijstRepo.Update(item);
-        }
-
-        public IEnumerable<Lijst> GetAllPublic()
-        {
-            return _lijstRepo.FindAllPublic();
-        }
+        }        
     }
 }

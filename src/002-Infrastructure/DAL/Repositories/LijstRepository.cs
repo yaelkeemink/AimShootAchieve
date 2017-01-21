@@ -19,6 +19,7 @@ namespace _002_Infrastructure.DAL.Repositories
         {
             return _context.Lijsten.Where(a => a.Id == id && a.UserId == userId)
                 .Include(a => a.Items)
+                .Include(a => a.User)
                 .FirstOrDefault();
         }
 
@@ -26,6 +27,7 @@ namespace _002_Infrastructure.DAL.Repositories
         {
             return _context.Lijsten
                 .Include(a => a.Items)
+                .Include(a => a.User)
                 .Where(a => a.UserId == userId);
         }
 

@@ -57,9 +57,9 @@ namespace _002_Infrastructure.Services
             reis.Landen.Add(land);
             Update(reis);
         }
-        public IEnumerable<Reis> GetAllPublic()
+        public IEnumerable<Reis> GetAllPublic(string naam)
         {
-            return _repo.FindAllPublic();
+            return _repo.FindAllPublic(naam);
         }
     }
 }

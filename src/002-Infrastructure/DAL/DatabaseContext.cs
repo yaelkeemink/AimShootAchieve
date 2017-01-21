@@ -17,7 +17,7 @@ namespace _002_AimShootAchieve.Infrastructure.DAL
         public DatabaseContext(DbContextOptions options)
             : base(options)
         {
-            this.Database.EnsureCreated();
+            this.Database.EnsureCreated();            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

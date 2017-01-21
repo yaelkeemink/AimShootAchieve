@@ -13,7 +13,7 @@
 .city{
     font-size: 1.2em;
 }
-.flexContainer{
+.flexContainerDashboard{
     display: flex;  
     flex-wrap: wrap;
     justify-content: space-between;
@@ -31,6 +31,10 @@
 }
 .flexDahboardRef p{
     font-size:1.7em;
+}
+.flexContainerReis{
+    display: flex;  
+    flex-wrap: wrap;
 }
 .flexReisContainer{
     display: inline-flex;
