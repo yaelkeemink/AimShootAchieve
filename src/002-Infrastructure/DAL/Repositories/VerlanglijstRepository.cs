@@ -26,6 +26,14 @@ namespace _002_Infrastructure.DAL.Repositories
             return item.Id;
         }
 
+        public override Verlanglijst FindPublic(int id)
+        {
+            return GetDbSet()
+                .Include(a => a.User)
+                .Include(a => a.VerlanglijstItems)
+                .Where(a => a.Id == id && !a.Prive)
+                .SingleOrDefault();
+        }
         public override Verlanglijst Find(int id, string userId)
         {
             return GetDbSet()

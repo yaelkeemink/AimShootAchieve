@@ -1,0 +1,32 @@
+﻿@model Verlanglijst
+<h2>@Model.Naam verlanglijstje</h2><hr />
+
+<form asp-action="ReturnToIndex">
+    @Html.HiddenFor(a => a.User.UserName)
+    <input type="submit" value="Terug" class="btn btn-default" />
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VerlanglijstItems.FirstOrDefault().Naam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VerlanglijstItems.FirstOrDefault().Omschrijving)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VerlanglijstItems.FirstOrDefault().Prive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VerlanglijstItems.FirstOrDefault().Winkel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VerlanglijstItems.FirstOrDefault().Link)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @Html.EditorFor(a => a.VerlanglijstItems)
+    </tbody>
+</table>

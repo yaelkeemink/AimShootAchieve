@@ -46,6 +46,12 @@ namespace _002_Infrastructure.Services
                 AantalPubliekeLijstenLouis = _lijstRepo.FindAllPublic("Louis").Count(),
                 AantalPubliekeLijstenYael = _lijstRepo.FindAllPublic("Yael").Count(),
                 AantalPubliekeLijstenYouri = _lijstRepo.FindAllPublic("Youri").Count(),
+
+                AantalPubliekeVerlanglijstenEla = _verlanglijstRepo.FindAllPublic("Ela").Count(),
+                AantalPubliekeVerlanglijstenJane = _verlanglijstRepo.FindAllPublic("Jane").Count(),
+                AantalPubliekeVerlanglijstenLouis = _verlanglijstRepo.FindAllPublic("Louis").Count(),
+                AantalPubliekeVerlanglijstenYael = _verlanglijstRepo.FindAllPublic("Yael").Count(),
+                AantalPubliekeVerlanglijstenYouri = _verlanglijstRepo.FindAllPublic("Youri").Count(),
             };
         }
     }

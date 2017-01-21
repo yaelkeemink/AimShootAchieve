@@ -1,0 +1,20 @@
+﻿@model VerlanglijstItem
+<tr>
+    <td>
+        @Html.DisplayFor(a => a.Naam)
+    </td>
+    <td>
+        @Html.DisplayFor(a => a.Omschrijving)
+    </td>
+    <td>
+        @Html.DisplayFor(a => a.Prijs)
+    </td>
+    <td>
+        @Html.DisplayFor(a => a.Winkel)
+    </td>
+    <td>
+        @if (@Model.Link != "" && @Model.Link != null)
+        {
+            <a href="@Model.Link" target="_blank">klik mij</a>
+        }
+    </td>

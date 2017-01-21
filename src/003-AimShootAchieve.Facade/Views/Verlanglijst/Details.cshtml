@@ -28,9 +28,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.VerlanglijstItems.FirstOrDefault().Link)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.VerlanglijstItems.FirstOrDefault().Prive)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -56,9 +53,6 @@
                     {
                         <a href="@item.Link" target="_blank">klik mij</a>
                     }
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Prive)
                 </td>
                 <td>
                     <a asp-action="WensAanpassen" asp-route-id="@item.Id">Wijzig</a> |

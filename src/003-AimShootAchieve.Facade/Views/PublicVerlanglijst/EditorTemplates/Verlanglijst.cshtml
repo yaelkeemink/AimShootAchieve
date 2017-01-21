@@ -1,0 +1,10 @@
+﻿@model Verlanglijst
+
+<tr>
+    <td>
+        @Html.DisplayFor(a => a.Naam)
+    </td>
+    <td>
+        <a asp-action="Details" asp-route-id="@Model.Id">Details</a>
+    </td>
+</tr>

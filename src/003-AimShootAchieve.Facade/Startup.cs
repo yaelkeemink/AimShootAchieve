@@ -62,6 +62,7 @@ namespace _003_AimShootAchieve.Facade
             services.AddScoped<IReisService, ReisService>();
             services.AddScoped<IPublicService<Reis>, BasePublicService<Reis>>();
             services.AddScoped<IPublicService<Lijst>, BasePublicService<Lijst>>();
+            services.AddScoped<IPublicService<Verlanglijst>, BasePublicService<Verlanglijst>>();
 
             services.AddIdentity<ApplicationUser, IdentityRole>(
                 o => {
