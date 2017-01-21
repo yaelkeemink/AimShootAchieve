@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 namespace _002_Infrastructure.Services
 {
     public class VerlanglijstService
-        : IService<Verlanglijst, int>
+        : IService<Verlanglijst>
     {
-        private IRepository<Verlanglijst, int> _repo;
+        private IRepository<Verlanglijst> _repo;
 
-        public VerlanglijstService(IRepository<Verlanglijst, int> repo)
+        public VerlanglijstService(IRepository<Verlanglijst> repo)
         {
             _repo = repo;
         }

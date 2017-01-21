@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 
 namespace _001_Domain.Interfaces
 {
-    public interface IService<Entity, Key>
+    public interface IService<Entity>
         where Entity :class
     {
         void Add(Entity item);
         IEnumerable<Entity> GetAll(string userId);
-        Entity Get(Key id, string userId);
+        Entity Get(int id, string userId);
         void Update(Entity item);
-        void Delete(Key id, string userId);
+        void Delete(int id, string userId);
     }
 }

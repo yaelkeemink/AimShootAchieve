@@ -7,7 +7,7 @@ using _001_Domain.Entities;
 
 namespace _001_Domain.Interfaces
 {
-    public interface IRepository<TEntity, TKey>
+    public interface IRepository<TEntity>
         where TEntity: class
     {
         IQueryable<TEntity> FindAll(string userId);
@@ -15,7 +15,7 @@ namespace _001_Domain.Interfaces
 
         IQueryable<TEntity> FindBy(Expression<Func<TEntity, bool>> filter, string userId);
 
-        TEntity Find(TKey id, string userId);
+        TEntity Find(int id, string userId);
         TEntity FindPublic(int id);
         void Insert(TEntity item);
         void Update(TEntity item);

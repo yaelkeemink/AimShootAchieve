@@ -10,10 +10,10 @@ namespace _002_Infrastructure.Services
     public class LijstService
         : ILijstService
     {
-        private readonly IRepository<Lijst, int> _lijstRepo;
-        private readonly IRepository<LijstItem, int> _lijstItemRepo;
+        private readonly IRepository<Lijst> _lijstRepo;
+        private readonly IRepository<LijstItem> _lijstItemRepo;
 
-        public LijstService(IRepository<Lijst, int> lijstRepo, IRepository<LijstItem, int> lijstItemRepo)
+        public LijstService(IRepository<Lijst> lijstRepo, IRepository<LijstItem> lijstItemRepo)
         {
             _lijstRepo = lijstRepo;
             _lijstItemRepo = lijstItemRepo;

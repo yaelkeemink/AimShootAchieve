@@ -6,9 +6,10 @@ using _001_Domain.Entities;
 
 namespace _001_Domain.Interfaces
 {
-    public interface IPublicReisService
+    public interface IPublicService<Entity>
+        where Entity : BaseEntity
     {
-        IEnumerable<Reis> FindPublicReizen(string v);
-        Reis FindPublicReis(int id);
+        IEnumerable<Entity> FindPublicReizen(string userId);
+        Entity FindPublicReis(int id);
     }
 }

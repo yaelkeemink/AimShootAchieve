@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace _002_Infrastructure.DAL.Repositories
 {
     public class LijstRepository
-        : BaseRepository<Lijst, int, DatabaseContext>
+        : BaseRepository<Lijst, DatabaseContext>
     {
         public LijstRepository(DatabaseContext context) 
             : base(context)

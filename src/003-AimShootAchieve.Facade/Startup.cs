@@ -50,16 +50,17 @@ namespace _003_AimShootAchieve.Facade
             services.AddDbContext<DatabaseContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddScoped<IRepository<Verlanglijst, int>, VerlanglijstRepository>();
-            services.AddScoped<IRepository<Lijst, int>, LijstRepository>();
-            services.AddScoped<IRepository<LijstItem, int>, LijstItemRepository>();
-            services.AddScoped<IRepository<Reis, int>, ReisRepository>();
+            services.AddScoped<IRepository<Verlanglijst>, VerlanglijstRepository>();
+            services.AddScoped<IRepository<Lijst>, LijstRepository>();
+            services.AddScoped<IRepository<LijstItem>, LijstItemRepository>();
+            services.AddScoped<IRepository<Reis>, ReisRepository>();
 
-            services.AddScoped<IService<Verlanglijst, int>, VerlanglijstService>();
+            services.AddScoped<IService<Verlanglijst>, VerlanglijstService>();
             services.AddScoped<ILijstService, LijstService>();
             services.AddScoped<IHomeService, HomeService>();
             services.AddScoped<IReisService, ReisService>();
-            services.AddScoped<IPublicReisService, PublicReisService>();
+            services.AddScoped<IPublicService<Reis>, PublicService<Reis>>();
+            services.AddScoped<IPublicService<Lijst>, PublicService<Lijst>>();
 
             services.AddIdentity<ApplicationUser, IdentityRole>(
                 o => {

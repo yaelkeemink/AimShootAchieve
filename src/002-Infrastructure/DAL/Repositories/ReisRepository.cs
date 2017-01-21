@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace _002_Infrastructure.DAL.Repositories
 {
     public class ReisRepository
-        : BaseRepository<Reis, int, DatabaseContext>
+        : BaseRepository<Reis, DatabaseContext>
     {
         public ReisRepository(DatabaseContext context) 
             : base(context)

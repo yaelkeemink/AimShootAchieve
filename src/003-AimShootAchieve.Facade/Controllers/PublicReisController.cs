@@ -15,9 +15,9 @@ namespace _003_AimShootAchieve.Facade.Controllers
     public class PublicReisController
         : BaseController
     {
-        private IPublicReisService _service;
+        private IPublicService<Reis> _service;
 
-        public PublicReisController(IPublicReisService service,
+        public PublicReisController(IPublicService<Reis> service,
             UserManager<ApplicationUser> userManager,
             ILoggerFactory loggerFactory)
             : base(userManager, loggerFactory)

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace _002_Infrastructure.DAL.Repositories
 {
     public class VerlanglijstRepository
-        : BaseRepository<Verlanglijst, int, DatabaseContext>
+        : BaseRepository<Verlanglijst, DatabaseContext>
     {
         public VerlanglijstRepository(DatabaseContext context) 
             : base(context)

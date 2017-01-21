@@ -11,11 +11,11 @@ namespace _002_Infrastructure.Services
     public class HomeService
        : IHomeService
     {
-        private IRepository<Lijst, int> _lijstRepo;
-        private IRepository<Reis, int> _reisRepo;
-        private IRepository<Verlanglijst, int> _verlanglijstRepo;
+        private IRepository<Lijst> _lijstRepo;
+        private IRepository<Reis> _reisRepo;
+        private IRepository<Verlanglijst> _verlanglijstRepo;
 
-        public HomeService(IRepository<Lijst, int> lijstjeRepo, IRepository<Reis, int> reisRepo, IRepository<Verlanglijst, int> verlanglijstRepo)
+        public HomeService(IRepository<Lijst> lijstjeRepo, IRepository<Reis> reisRepo, IRepository<Verlanglijst> verlanglijstRepo)
         {
             _lijstRepo = lijstjeRepo;
             _reisRepo = reisRepo;

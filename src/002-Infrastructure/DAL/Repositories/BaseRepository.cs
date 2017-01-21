@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace _002_Infrastructure.DAL.Repositories
 {
-    public abstract class BaseRepository<Entity, Key, Context>
-    : IRepository<Entity, Key>,
+    public abstract class BaseRepository<Entity, Context>
+    : IRepository<Entity>,
         IDisposable
         where Context : DbContext
         where Entity : BaseEntity
@@ -22,7 +22,7 @@ namespace _002_Infrastructure.DAL.Repositories
             _context = context;
         }
         protected abstract DbSet<Entity> GetDbSet();
-        protected abstract Key GetKeyFrom(Entity item);
+        protected abstract int GetKeyFrom(Entity item);
 
         public virtual IQueryable<Entity> FindBy(Expression<Func<Entity, bool>> filter, string userId)
         {
@@ -31,7 +31,7 @@ namespace _002_Infrastructure.DAL.Repositories
                 .Where(filter);
         }
 
-        public virtual Entity Find(Key id, string userId)
+        public virtual Entity Find(int id, string userId)
         {
             return GetDbSet().Include(a => a.User)
                 .Where(a => a.UserId == userId).Single(a => GetKeyFrom(a).Equals(id));

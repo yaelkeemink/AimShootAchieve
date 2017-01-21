@@ -7,22 +7,23 @@ using _001_Domain.Entities;
 
 namespace _002_Infrastructure.Services
 {
-    public class PublicReisService
-        : IPublicReisService
+    public class PublicService<Entity>
+        : IPublicService<Entity>
+        where Entity : BaseEntity
     {
-        private IRepository<Reis, int> _repo;
+        private IRepository<Entity> _repo;
 
-        public PublicReisService(IRepository<Reis, int> repo)
+        public PublicService(IRepository<Entity> repo)
         {
             _repo = repo;
         }
 
-        public Reis FindPublicReis(int id)
+        public Entity FindPublicReis(int id)
         {
             return _repo.FindPublic(id);
         }
 
-        public IEnumerable<Reis> FindPublicReizen(string userName)
+        public IEnumerable<Entity> FindPublicReizen(string userName)
         {
             return _repo.FindAllPublic(userName);
         }

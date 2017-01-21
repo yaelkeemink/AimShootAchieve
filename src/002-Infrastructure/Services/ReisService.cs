@@ -10,8 +10,8 @@ namespace _002_Infrastructure.Services
     public class ReisService
         :IReisService
     {
-        private IRepository<Reis, int> _repo;
-        public ReisService(IRepository<Reis, int> repo)
+        private IRepository<Reis> _repo;
+        public ReisService(IRepository<Reis> repo)
         {
             _repo = repo;
         }
