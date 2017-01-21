@@ -1,7 +1,7 @@
-﻿@model PublicReisViewModel
+﻿@model BasePublicViewModel<ReisViewModel>
 
 <h2>Mijn reizen</h2><hr />
-<form asp-action="Index" style="width:100%;">
+<form asp-action="Index">
     <div class="form-group">
         <label asp-for="Naam" class="col-md-2 control-label"></label>
         <div class="col-md-10">
@@ -12,4 +12,4 @@
         </div>
     </div>
 </form>
-@Html.EditorFor(a => a.Reizen)
+@Html.EditorFor(a => a.Entities)

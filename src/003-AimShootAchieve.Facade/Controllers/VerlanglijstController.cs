@@ -16,9 +16,9 @@ namespace _003_AimShootAchieve.Facade.Controllers
     public class VerlanglijstController
         : BaseController
     {
-        private readonly IService<Verlanglijst, int> _service;
+        private readonly IService<Verlanglijst> _service;
 
-        public VerlanglijstController(IService<Verlanglijst, int> service,
+        public VerlanglijstController(IService<Verlanglijst> service,
             UserManager<ApplicationUser> userManager, 
             ILoggerFactory loggerFactory)
             : base(userManager, loggerFactory)

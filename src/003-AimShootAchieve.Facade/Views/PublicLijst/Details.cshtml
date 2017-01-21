@@ -1,0 +1,21 @@
+﻿@model Lijst
+<form asp-action="Opslaan">
+    <h2>@Html.DisplayFor(model => model.Naam)</h2><hr />
+    <div>
+        <dl>
+            <dd>
+            </dd>
+            @Html.HiddenFor(a => Model.Id)
+            @Html.HiddenFor(a => Model.Naam)
+            @Html.HiddenFor(a => a.UserId)
+            @Html.EditorFor(a => a.Items)            
+        </dl>
+    </div>
+    <div>
+        <input type="submit" value="Opslaan" class="btn btn-default" />
+    </div>
+</form>
+<form asp-action="ReturnToIndex">
+    @Html.HiddenFor(a => a.User.UserName)    
+    <input type="submit" value="Terug" class="btn btn-default" />
+</form>

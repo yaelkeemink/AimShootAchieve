@@ -1,0 +1,31 @@
+﻿@model BasePublicViewModel<Lijst>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>@Model.Naam zijn lijsten</h2>
+
+<form asp-action="Index">
+    <div class="form-group">
+        <label asp-for="Naam" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <select asp-for="Naam" asp-items="@Model.Namen" class="form-control"></select>
+        </div>
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Zoek" class="btn btn-default" />
+        </div>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Naam)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @Html.EditorFor(a => a.Entities)
+    </tbody>
+</table>

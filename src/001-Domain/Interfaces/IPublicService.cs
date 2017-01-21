@@ -9,7 +9,7 @@ namespace _001_Domain.Interfaces
     public interface IPublicService<Entity>
         where Entity : BaseEntity
     {
-        IEnumerable<Entity> FindPublicReizen(string userId);
-        Entity FindPublicReis(int id);
+        IEnumerable<Entity> FindPublic(string userId);
+        Entity FindPublic(int id);
     }
 }

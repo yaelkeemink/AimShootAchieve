@@ -31,6 +31,15 @@ namespace _002_Infrastructure.DAL.Repositories
                 .Where(a => a.UserId == userId);
         }
 
+        public override Lijst FindPublic(int id)
+        {
+            return GetDbSet()
+                .Include(a => a.User)
+                .Include(a => a.Items)
+                .Where(a => a.Id == id && !a.Prive)
+                .SingleOrDefault();
+        }
+
         protected override DbSet<Lijst> GetDbSet()
         {
             return _context.Lijsten;

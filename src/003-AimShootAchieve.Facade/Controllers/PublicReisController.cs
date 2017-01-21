@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc;
 using _001_Domain.Interfaces;
-using _001_Domain.ViewModels.PublicReisViewModels;
 using _001_Domain.ViewModels.ReisViewModels;
+using _001_Domain.ViewModels.PublicViewModels;
 
 namespace _003_AimShootAchieve.Facade.Controllers
 {
@@ -25,7 +25,7 @@ namespace _003_AimShootAchieve.Facade.Controllers
             _service = service;
         }
 
-        public IActionResult Index(PublicReisViewModel model)
+        public IActionResult Index(BasePublicViewModel<ReisViewModel> model)
         {
             var viewModel = GetPublicReizen(model.Naam);
             return View(viewModel);
@@ -33,27 +33,27 @@ namespace _003_AimShootAchieve.Facade.Controllers
 
         public IActionResult Details(int id)
         {
-            ReisViewModel viewModel = _service.FindPublicReis(id);
+            ReisViewModel viewModel = _service.FindPublic(id);
             return View(viewModel);
         }
         public IActionResult ReturnToIndex(ReisViewModel model)
         {
-            var viewModel = new PublicReisViewModel()
+            var viewModel = new BasePublicViewModel<ReisViewModel>()
             {
                 Naam = model.UserNaam,
             };
             return RedirectToAction("index", viewModel);
         }
-        private PublicReisViewModel GetPublicReizen(string naam)
+        private BasePublicViewModel<ReisViewModel> GetPublicReizen(string naam)
         {
             IEnumerable<Reis> reizen;
             if (string.IsNullOrEmpty(naam))
             {
-                reizen = _service.FindPublicReizen(GetFirstNaam());
+                reizen = _service.FindPublic(GetFirstNaam());
             }
             else
             {
-                reizen = _service.FindPublicReizen(naam);
+                reizen = _service.FindPublic(naam);
             }
             List<ReisViewModel> reisModels = new List<ReisViewModel>();
 
@@ -61,7 +61,7 @@ namespace _003_AimShootAchieve.Facade.Controllers
             {
                 reisModels.Add(reis);
             }
-            return new PublicReisViewModel(reisModels, GetUserName());
+            return new BasePublicViewModel<ReisViewModel>(reisModels, GetUserName());
         }
     }
 }

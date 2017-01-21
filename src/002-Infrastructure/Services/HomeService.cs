@@ -40,6 +40,12 @@ namespace _002_Infrastructure.Services
                 AantalPubliekeReizenLouis = _reisRepo.FindAllPublic("Louis").Count(),
                 AantalPubliekeReizenYael = _reisRepo.FindAllPublic("Yael").Count(),
                 AantalPubliekeReizenYouri = _reisRepo.FindAllPublic("Youri").Count(),
+
+                AantalPubliekeLijstenEla = _lijstRepo.FindAllPublic("Ela").Count(),
+                AantalPubliekeLijstenJane = _lijstRepo.FindAllPublic("Jane").Count(),
+                AantalPubliekeLijstenLouis = _lijstRepo.FindAllPublic("Louis").Count(),
+                AantalPubliekeLijstenYael = _lijstRepo.FindAllPublic("Yael").Count(),
+                AantalPubliekeLijstenYouri = _lijstRepo.FindAllPublic("Youri").Count(),
             };
         }
     }

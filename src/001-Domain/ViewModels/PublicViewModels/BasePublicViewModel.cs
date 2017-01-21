@@ -1,20 +1,18 @@
-﻿using _001_Domain.Entities;
-using _001_Domain.ViewModels.ReisViewModels;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace _001_Domain.ViewModels.PublicReisViewModels
+namespace _001_Domain.ViewModels.PublicViewModels
 {
-    public class PublicReisViewModel
+    public class BasePublicViewModel<Entity>
     {
-        public PublicReisViewModel()
+        public BasePublicViewModel()
         {
 
         }
-        public PublicReisViewModel(IEnumerable<ReisViewModel> reizen, string userName)
+        public BasePublicViewModel(IEnumerable<Entity> entities, string userName)
         {
             List<string> namenLijst = new List<string>()
             {
@@ -26,9 +24,9 @@ namespace _001_Domain.ViewModels.PublicReisViewModels
             };
             namenLijst = namenLijst.Where(a => a != userName).ToList();
             Namen = new SelectList(namenLijst);
-            Reizen = reizen;
+            this.Entities = entities;
         }
-        public IEnumerable<ReisViewModel> Reizen { get; set; }
+        public IEnumerable<Entity> Entities { get; set; }
         public string Naam { get; set; }
         public SelectList Namen { get; set; }
     }
