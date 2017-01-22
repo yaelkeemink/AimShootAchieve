@@ -23,24 +23,29 @@ namespace _001_Domain.ViewModels.LijstViewModels
                 {
                     new LijstItem()
                     {
-                        Naam = model.Wens1
+                        Naam = model.Wens1,
+                        UserId = model.UserId
                     }
                     ,
                     new LijstItem()
                     {
-                        Naam = model.Wens2
+                        Naam = model.Wens2,
+                        UserId = model.UserId
                     },
                     new LijstItem()
                     {
-                        Naam = model.Wens3
+                        Naam = model.Wens3,
+                        UserId = model.UserId
                     },
                     new LijstItem()
                     {
-                        Naam = model.Wens4
+                        Naam = model.Wens4,
+                        UserId = model.UserId
                     },
                     new LijstItem()
                     {
-                        Naam = model.Wens5
+                        Naam = model.Wens5,
+                        UserId = model.UserId
                     }
                 };
             

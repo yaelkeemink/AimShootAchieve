@@ -5,8 +5,8 @@
 <dd>
     <div class="list-item-container">
         <article>
-            @Html.CheckBoxFor(a => Model.Gedaan)
-            @Html.DisplayFor(a => Model.Naam)
+            <input type="checkbox" asp-for="Gedaan"/>
+            <p style="display:inline;">@Model.Naam</p>
         </article>
         <a asp-controller="Lijst" asp-action="LijstItemVerwijderen" asp-route-id="@Model.Id" class="btn btn-default">Verwijderen</a>
     </div>

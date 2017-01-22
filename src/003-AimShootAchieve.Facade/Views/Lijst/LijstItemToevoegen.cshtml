@@ -14,7 +14,7 @@
         <div class="form-group">
             <label asp-for="Naam" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Naam" class="form-control" />
+                <input asp-for="Naam" class="form-control" id="naamField"/>
                 <span asp-validation-for="Naam" class="text-danger" />
             </div>
         </div>
@@ -33,3 +33,6 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+<script type="text/javascript">
+    document.getElementById("naamField").value = "";
+</script>

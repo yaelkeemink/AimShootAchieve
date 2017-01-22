@@ -1,4 +1,5 @@
 ﻿using _001_Domain.Entities;
+using _001_Domain.Enums;
 using _001_Domain.Interfaces;
 using _001_Domain.ViewModels.HomeViewModels;
 using System;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _001_Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -7,12 +8,6 @@ using System.Threading.Tasks;
 
 namespace _001_Domain.Entities
 {
-    public enum Status
-    {
-        Wens = 1,
-        Geboekt = 2,
-        Gedaan = 3,
-    }
     public class Reis
         : BaseEntity
     {

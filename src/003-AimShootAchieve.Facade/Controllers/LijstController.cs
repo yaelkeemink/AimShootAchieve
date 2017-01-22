@@ -66,9 +66,10 @@ namespace _003_AimShootAchieve.Facade.Controllers
         {
             if (ModelState.IsValid)
             {
-                lijst.UserId = GetUserId();
-                _service.Add(lijst);
-                return RedirectToAction("Index");
+                Lijst model = lijst;
+                model.UserId = GetUserId();
+                _service.Add(model);
+                return RedirectToAction($"Details/{model.Id}");
             }
             return View(lijst);
         }

@@ -1,4 +1,5 @@
 ﻿using _001_Domain.Entities;
+using _001_Domain.Enums;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;

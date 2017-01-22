@@ -1,4 +1,5 @@
 ﻿using _001_Domain.Entities;
+using _001_Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
