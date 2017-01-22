@@ -20,5 +20,14 @@ namespace _001_Domain.Entities
         public DateTime? VertrekDatum { get; set; }
         public Status ReisStatus { get; set; }
         public List<Land> Landen { get; set; }
+        public decimal TotaalPrijs { get; set; }
+        public IEnumerable<Kostenpost> Prijzen { get; set; }
+    }
+    public class Kostenpost
+        : BaseEntity
+    {
+        public decimal Prijs { get; set; }
+        public int ReisId { get; set; }
+        public Reis Reis { get; set; }
     }
 }
