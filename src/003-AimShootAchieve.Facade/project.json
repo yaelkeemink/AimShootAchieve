@@ -35,7 +35,7 @@
       "type": "build"
     },
     "002-Infrastructure": "1.0.0-*",
-    "Microsoft.AspNetCore.Mvc": "1.0.1"
+    "Microsoft.AspNetCore.Mvc": "1.0.0"
   },
 
   "tools": {
