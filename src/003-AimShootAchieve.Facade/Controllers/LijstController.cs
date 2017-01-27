@@ -54,7 +54,11 @@ namespace _003_AimShootAchieve.Facade.Controllers
         // GET: Lijstjes/Create
         public IActionResult Aanmaken()
         {
-            return View();
+            var viewModel = new AddLijstItemViewModel()
+            {
+                UserId = GetUserId(),
+            };
+            return View(viewModel);
         }
 
         // POST: Lijstjes/Create
