@@ -10,8 +10,8 @@
     <a class="btn btn-default" asp-action="index">Terug</a>
     <a class="btn btn-default" asp-action="WensToevoegen" asp-route-id="@Model.Id">Nieuwe wens</a>
 </p>
-<table class="table">
-    <thead>
+<table class="table table-hover">
+    <thead class="thead-inverse">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.VerlanglijstItems.FirstOrDefault().Naam)

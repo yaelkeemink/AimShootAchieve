@@ -26,14 +26,14 @@ namespace _002_Infrastructure.DAL.Repositories
         {
             return GetDbSet()
                 .Include(a => a.User)
-                .Include(a => a.VerlanglijstItems.OrderBy(b => b.Naam))
+                .Include(a => a.VerlanglijstItems)
                 .Where(a => a.Id == id && !a.Prive)
                 .SingleOrDefault();
         }
         public override Verlanglijst Find(int id, string userId)
         {
             return GetDbSet()
-                .Include(a => a.VerlanglijstItems.OrderBy(b => b.Naam))
+                .Include(a => a.VerlanglijstItems)
                 .Include(a => a.User)
                 .Where(a => a.UserId == userId)
                 .Single(a => GetKeyFrom(a).Equals(id));
