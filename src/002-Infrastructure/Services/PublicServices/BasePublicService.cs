@@ -5,13 +5,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using _001_Domain.Entities;
 
-namespace _002_Infrastructure.Services
+namespace _002_Infrastructure.Services.PublicServices
 {
     public class BasePublicService<Entity>
         : IPublicService<Entity>
         where Entity : BaseEntity
     {
-        protected IRepository<Entity> _repo;
+        protected readonly IRepository<Entity> _repo;
 
         public BasePublicService(IRepository<Entity> repo)
         {
@@ -25,7 +25,8 @@ namespace _002_Infrastructure.Services
 
         public virtual IEnumerable<Entity> FindPublic(string userName)
         {
-            return _repo.FindAllPublic(userName);
+            return _repo.FindAllPublic(userName)
+                .OrderBy(a => a.Naam);
         }
     }
 }

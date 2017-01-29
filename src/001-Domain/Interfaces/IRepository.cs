@@ -8,10 +8,11 @@ using _001_Domain.Entities;
 namespace _001_Domain.Interfaces
 {
     public interface IRepository<TEntity>
+        : IDisposable
         where TEntity: class
     {
         IQueryable<TEntity> FindAll(string userId);
-        IEnumerable<TEntity> FindAllPublic(string userName);
+        IQueryable<TEntity> FindAllPublic(string userName);
 
         IQueryable<TEntity> FindBy(Expression<Func<TEntity, bool>> filter, string userId);
 

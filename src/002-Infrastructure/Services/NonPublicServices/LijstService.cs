@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace _002_Infrastructure.Services
+namespace _002_Infrastructure.Services.NonPublicServices
 {
     public class LijstService
         : ILijstService
@@ -45,7 +45,9 @@ namespace _002_Infrastructure.Services
 
         public IEnumerable<Lijst> GetAll(string userId)
         {
-            return _lijstRepo.FindAll(userId);
+            return _lijstRepo.FindAll(userId)
+                .OrderBy(a => a.Naam)
+                .ThenBy(a => a.Id);
         }
 
         public int RemoveItem(int itemId, string userId)
@@ -60,6 +62,12 @@ namespace _002_Infrastructure.Services
         public void Update(Lijst item)
         {
             _lijstRepo.Update(item);
-        }        
+        }
+
+        public void Dispose()
+        {
+            _lijstRepo?.Dispose();
+            _lijstItemRepo?.Dispose();
+        }
     }
 }

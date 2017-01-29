@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace _001_Domain.Interfaces
 {
     public interface IReisService
+        : IDisposable
     {        
         void Add(Reis item);
         IEnumerable<Reis> GetAll(string userId);
-        IEnumerable<Reis> GetAllPublic(string naam);
         Reis Get(int id, string userId);
         void Update(Reis item);
         void Delete(int id, string userId);

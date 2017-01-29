@@ -1,10 +1,6 @@
 ﻿using _001_Domain.Entities;
-using _002_AimShootAchieve.Infrastructure.DAL;
 using Microsoft.AspNetCore.Identity;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace _002_Infrastructure.DAL
 {

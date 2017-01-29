@@ -7,14 +7,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace _002_Infrastructure.Services
+namespace _002_Infrastructure.Services.NonPublicServices
 {
     public class HomeService
        : IHomeService
     {
-        private IRepository<Lijst> _lijstRepo;
-        private IRepository<Reis> _reisRepo;
-        private IRepository<Verlanglijst> _verlanglijstRepo;
+        private readonly IRepository<Lijst> _lijstRepo;
+        private readonly IRepository<Reis> _reisRepo;
+        private readonly IRepository<Verlanglijst> _verlanglijstRepo;
 
         public HomeService(IRepository<Lijst> lijstjeRepo, IRepository<Reis> reisRepo, IRepository<Verlanglijst> verlanglijstRepo)
         {

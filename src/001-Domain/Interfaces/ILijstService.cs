@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace _001_Domain.Interfaces
 {
     public interface ILijstService
+        : IDisposable
     {
         void Add(Lijst item);
         IEnumerable<Lijst> GetAll(string userId);
