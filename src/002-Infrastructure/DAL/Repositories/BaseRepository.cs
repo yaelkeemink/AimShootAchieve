@@ -10,12 +10,11 @@ using System.Threading.Tasks;
 namespace _002_Infrastructure.DAL.Repositories
 {
     public abstract class BaseRepository<Entity, Context>
-    : IRepository<Entity>,
-        IDisposable
+    : IRepository<Entity>        
         where Context : DbContext
         where Entity : BaseEntity
     {
-        protected Context _context;
+        protected readonly Context _context;
 
         public BaseRepository(Context context)
         {
@@ -58,14 +57,9 @@ namespace _002_Infrastructure.DAL.Repositories
         {
             _context.Remove(item);
             _context.SaveChanges();
-        }
+        }        
 
-        public virtual void Dispose()
-        {
-            _context.Dispose();
-        }
-
-        public virtual IEnumerable<Entity> FindAllPublic(string naam)
+        public virtual IQueryable<Entity> FindAllPublic(string naam)
         {
             return GetDbSet()
                 .Include(a => a.User)
@@ -78,6 +72,11 @@ namespace _002_Infrastructure.DAL.Repositories
                 .Include(a => a.User)
                 .Where(a => a.Id == id && !a.Prive)
                 .SingleOrDefault();
+        }
+
+        public virtual void Dispose()
+        {
+            _context.Dispose();
         }
     }
 }

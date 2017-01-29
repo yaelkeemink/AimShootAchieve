@@ -6,12 +6,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace _002_Infrastructure.Services
+namespace _002_Infrastructure.Services.NonPublicServices
 {
     public class ReisService
         :IReisService
     {
-        private IRepository<Reis> _repo;
+        private readonly IRepository<Reis> _repo;
         public ReisService(IRepository<Reis> repo)
         {
             _repo = repo;
@@ -57,10 +57,11 @@ namespace _002_Infrastructure.Services
             var reis = _repo.Find(land.ReisId, land.UserId);
             reis.Landen.Add(land);
             Update(reis);
-        }
-        public IEnumerable<Reis> GetAllPublic(string naam)
+        }      
+
+        public void Dispose()
         {
-            return _repo.FindAllPublic(naam);
+            _repo.Dispose();
         }
     }
 }

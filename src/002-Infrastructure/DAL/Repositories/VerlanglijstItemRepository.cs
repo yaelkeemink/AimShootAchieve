@@ -1,9 +1,4 @@
 ﻿using _001_Domain.Entities;
-using _002_AimShootAchieve.Infrastructure.DAL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 namespace _002_Infrastructure.DAL.Repositories

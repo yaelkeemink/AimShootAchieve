@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace _001_Domain.Interfaces
 {
     public interface IVerlanglijstService
+        : IDisposable
     {
         void Add(Verlanglijst item);
         IEnumerable<Verlanglijst> GetAll(string userId);

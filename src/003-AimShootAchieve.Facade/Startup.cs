@@ -1,11 +1,9 @@
-﻿using _001_AimShootAchieve.Domain.Interfaces;
-using _001_Domain.Entities;
+﻿using _001_Domain.Entities;
 using _001_Domain.Interfaces;
-using _002_AimShootAchieve.Infrastructure.DAL;
-using _002_AimShootAchieve.Infrastructure.Services;
 using _002_Infrastructure.DAL;
 using _002_Infrastructure.DAL.Repositories;
-using _002_Infrastructure.Services;
+using _002_Infrastructure.Services.NonPublicServices;
+using _002_Infrastructure.Services.PublicServices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -60,7 +58,8 @@ namespace _003_AimShootAchieve.Facade
             services.AddScoped<ILijstService, LijstService>();
             services.AddScoped<IHomeService, HomeService>();
             services.AddScoped<IReisService, ReisService>();
-            services.AddScoped<IPublicService<Reis>, BasePublicService<Reis>>();
+
+            services.AddScoped<IPublicService<Reis>, ReisPublicService>();
             services.AddScoped<IPublicService<Lijst>, BasePublicService<Lijst>>();
             services.AddScoped<IPublicService<Verlanglijst>, BasePublicService<Verlanglijst>>();
 

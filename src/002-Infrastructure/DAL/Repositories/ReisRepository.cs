@@ -1,10 +1,6 @@
 ﻿using _001_Domain.Entities;
-using _002_AimShootAchieve.Infrastructure.DAL;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace _002_Infrastructure.DAL.Repositories
 {
@@ -30,7 +26,10 @@ namespace _002_Infrastructure.DAL.Repositories
         {
             return _context.Reizen.Include(a => a.Landen)
                 .Include(a => a.User)
-                .Where(a => a.UserId == userId);
+                .Where(a => a.UserId == userId)
+                .OrderBy(a => a.ReisStatus)
+                .ThenBy(a => a.AankomstDatum)
+                .ThenBy(a => a.Naam);
         }
 
         public override Reis Find(int id, string userId)

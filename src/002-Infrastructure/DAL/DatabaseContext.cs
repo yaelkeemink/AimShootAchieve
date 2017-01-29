@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using _001_Domain.Entities;
 
-namespace _002_AimShootAchieve.Infrastructure.DAL
+namespace _002_Infrastructure.DAL
 {
     public class DatabaseContext 
         : IdentityDbContext<ApplicationUser>

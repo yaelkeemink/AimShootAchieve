@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace _002_Infrastructure.Services
+namespace _002_Infrastructure.Services.NonPublicServices
 {
     public class VerlanglijstService
         : IVerlanglijstService
@@ -28,7 +28,7 @@ namespace _002_Infrastructure.Services
             var toDelete = _verlanglijstRepo.Find(id, userId);
             _verlanglijstRepo.Delete(toDelete);
         }
-
+       
         public Verlanglijst Get(int id, string userId)
         {
             return _verlanglijstRepo.Find(id, userId);
@@ -36,7 +36,8 @@ namespace _002_Infrastructure.Services
 
         public IEnumerable<Verlanglijst> GetAll(string userId)
         {
-            return _verlanglijstRepo.FindAll(userId);
+            return _verlanglijstRepo.FindAll(userId)
+                .OrderBy(a => a.Naam);
         }
 
         public VerlanglijstItem GetItem(int id, string userId)
@@ -70,5 +71,12 @@ namespace _002_Infrastructure.Services
             _itemRepo.Delete(item);
             return verlanglijst.Id;
         }
+
+        public void Dispose()
+        {
+            _itemRepo?.Dispose();
+            _verlanglijstRepo?.Dispose();
+        }
+
     }
 }

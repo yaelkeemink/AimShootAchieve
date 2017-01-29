@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace _001_AimShootAchieve.Domain.Interfaces
+namespace _001_Domain.Interfaces
 {
     public interface IEmailSender
     {

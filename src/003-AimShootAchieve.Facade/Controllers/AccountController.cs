@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
-using _001_AimShootAchieve.Domain.Interfaces;
-using _001_.Domain.ViewModels.AccountViewModels;
 using _001_Domain.Entities;
+using _001_Domain.Interfaces;
+using _001_Domain.ViewModels.AccountViewModels;
 
 namespace _003_AimShootAchieve.Facade.Controllers
 {
