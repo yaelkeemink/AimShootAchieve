@@ -27,7 +27,7 @@ namespace _002_Infrastructure.DAL.Repositories
             return _context.Reizen.Include(a => a.Landen)
                 .Include(a => a.User)
                 .Where(a => a.UserId == userId)
-                .OrderBy(a => a.ReisStatus)
+                .OrderByDescending(a => a.ReisStatus)
                 .ThenBy(a => a.AankomstDatum)
                 .ThenBy(a => a.Naam);
         }
