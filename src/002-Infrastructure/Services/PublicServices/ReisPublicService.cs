@@ -17,7 +17,7 @@ namespace _002_Infrastructure.Services.PublicServices
         public override IEnumerable<Reis> FindPublic(string userName)
         {
             return base.FindPublic(userName)
-                .OrderBy(a => a.ReisStatus)
+                .OrderByDescending(a => a.ReisStatus)
                 .ThenBy(a => a.AankomstDatum)
                 .ThenBy(a => a.Naam);
                 
